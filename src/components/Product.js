@@ -14,12 +14,13 @@ export default class Product extends Component {
                         <Link to="/details">
                             <img src={img} alt="product" className="card-img-top"/>
                         </Link>
-                    </div>
-                    <button className="cart-btn" disabled={inCart?true:false}>
+                        <button className="cart-btn" disabled={inCart?true:false}>
                         {inCart ? (<p className="text-captalize mb-0" disabled>
                             InCart
                         </p>): (<i className="fas fa-cart-plus"/>)}
                     </button>
+                    </div>
+                    
                 </div>
             </ProductWrapper>
         )
