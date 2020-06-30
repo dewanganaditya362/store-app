@@ -20,7 +20,16 @@ export default class Product extends Component {
                         </p>): (<i className="fas fa-cart-plus"/>)}
                     </button>
                     </div>
-                    
+                    <div className="card-footer d-flex
+                    justify-content-between font-weight-bold">
+                        <p className="align-self-center mb-0">
+                            {title}
+                        </p>
+                        <h2 className="text-salmon font-italic mb-0">
+                            <span className="mr-1">$</span>
+                            {price}
+                        </h2>
+                    </div>
                 </div>
             </ProductWrapper>
         )
@@ -28,4 +37,63 @@ export default class Product extends Component {
 }
 
 const ProductWrapper = styled.div`
+    .card{
+        background-color:darkgrey;  
+        transition: 0.6s ease;
+    }
+
+    .card-footer{
+        background:#FFFAFA;
+        transition: 0.6s ease;
+    }
+    .card-footer p{
+        color:black;
+        font-size:1.2rem;
+        font-weight:bold;
+    }
+    
+    &:hover{
+        .card{
+            border:0.04rem solid white;
+            box-shadow:2px 2px 5px 0px white;
+        }
+
+        .card-footer{
+            background:#F0F8FF;
+        }
+    }
+    .img-container{
+        position:relative;
+        overflow:hidden;
+    }
+    
+    .card-img-top{
+        transition:0.6s ease;
+    }
+        .img-container:hover .card-img-top{
+            transform:scale(1.3);
+            
+        }
+
+    .cart-btn{
+        position:absolute;
+        bottom:0px;
+        right:0px;
+        padding:0.2rem 0.4rem;
+        background:salmon;
+        color:white;
+        font-size:1.8rem;
+        border:none;
+        border-radius:0.5rem 0 0 0;
+        transform:translate(100%,100%);
+        transition:0.6s ease;
+    }
+
+    .img-container:hover .cart-btn{
+        transform:translate(0,0);
+    }
+
+    .cart-btn:hover{
+        color:black;
+    }
 `;
