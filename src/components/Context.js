@@ -26,6 +26,8 @@ export default class ProductProvider extends Component {
             return{ products : tempProducts};
         })
     }
+
+    
     handleDetails = () =>{
         console.log("hello from detalis")
     }
