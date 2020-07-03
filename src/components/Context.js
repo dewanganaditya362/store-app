@@ -27,9 +27,16 @@ export default class ProductProvider extends Component {
         })
     }
 
+    getItem = id=>{
+        const product = this.state.products.find(item =>item.id===id);
+        return product;
+    }
     
-    handleDetails = () =>{
-        console.log("hello from detalis")
+    handleDetails = (id) =>{
+        const product = this.getItem(id);
+        this.setState(() =>{
+            return{detailProduct: product};
+        })
     }
 
     addToCart = ()=>{
@@ -39,7 +46,7 @@ export default class ProductProvider extends Component {
         return (
             <ProductContext.Provider value={{
                 ...this.state,
-                handleDetalis : this.handleDetalis,
+                handleDetails : this.handleDetails,
                 addToCart: this.addToCart
             }}>
                 {this.props.children}    

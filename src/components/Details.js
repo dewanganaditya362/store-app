@@ -60,12 +60,12 @@ export default class Details extends Component {
                                         </Button>
                                     </Link>
 
-                                    <Button className="text-capitalize" disabled={inCart?true:false}
+                                    <Button cart disabled={inCart?true:false}
                                     onClick = {()=>{
                                         value.addToCart(id)
                                     }}>
                                         {
-                                            inCart?"inCart":"add to cart"
+                                            inCart?"InCart":"Add To Cart"
                                         } 
 
                                     </Button>
