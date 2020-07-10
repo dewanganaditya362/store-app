@@ -7,7 +7,10 @@ export default class ProductProvider extends Component {
 
     state = {
         products: [],
-        detailProduct: detailProduct
+        detailProduct: detailProduct,
+        cart : [],
+        modalProduct: detailProduct,
+        modalOpen:true
     }
 
     componentDidMount(){
@@ -39,15 +42,44 @@ export default class ProductProvider extends Component {
         })
     }
 
-    addToCart = ()=>{
-        console.log("hello from addToCArt")
-    } 
+    addToCart = id => {
+        let tempProducts = [...this.state.products];
+        const index = tempProducts.indexOf(this.getItem(id));
+        const product = tempProducts[index];
+        product.inCart = true;
+        product.count = 1;
+        const price = product.price;
+        product.total = price;
+
+        this.setState(()=>{
+            return{products: tempProducts, cart:[...this.state.cart,product]}
+        },()=>{
+            console.log(this.state);
+        })
+
+    }
+
+    modalOpen = id=>{
+        const product = this.getItem(id)
+        this.setState(()=>{
+            return{modalProduct: product, modalOpen:true}
+        })
+    }
+
+    closeModal = ()=>{
+        this.setState(()=>{
+            return {modalOpen:false}
+        })
+    }
+
     render() {
         return (
             <ProductContext.Provider value={{
                 ...this.state,
                 handleDetails : this.handleDetails,
-                addToCart: this.addToCart
+                addToCart: this.addToCart,
+                modalOpen: this.modalOpen,
+                closeModal: this.closeModal
             }}>
                 {this.props.children}    
             </ProductContext.Provider>
