@@ -21,9 +21,24 @@ export default class Modal extends Component {
                             <ModalContainer>
                             <div className="container">
                                 <div className="row">
-                                    <div className="col-8 mx-auto 
-                                    col-md-6 col-lg-4 text-center text-capitalize">
-                                        <h5>item added to the cart</h5>
+                                    <div id = "modal" className="col-8 mx-auto 
+                                    col-md-6 col-lg-4 text-center text-capitalize p-5">
+                                        <h2>item added to the cart</h2>
+                                        <img src={img} className="img-fluid"/>
+                                        <h2>{title}</h2>
+                                        <h3 className="text-salmon">price : ${price}</h3>
+                                        <Link to="/">
+                                            <Button className="mb-2" onClick={()=>{closeModal();}}>
+                                                Continue Shopping
+                                            </Button>
+                                        </Link>
+
+                                        <Link to="/cart">
+                                            <Button cart onClick={()=>{closeModal();}}>
+                                                Go To Cart
+                                            </Button>
+                                        </Link>
+
                                     </div>
                                 </div>
                             </div>
@@ -44,5 +59,18 @@ const ModalContainer = styled.div`
     right:0;
     bottom:0;
     background:rgba(0,0,0,0.3);
-    
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    #modal{
+        background:darkgray;
+    }
+
+    h2{
+        color:black;
+        font-weight:bolder;
+        font-size:2.2rem;
+    }
+     
 `;

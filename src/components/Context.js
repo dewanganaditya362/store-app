@@ -9,8 +9,9 @@ export default class ProductProvider extends Component {
         products: [],
         detailProduct: detailProduct,
         cart : [],
-        modalProduct: detailProduct,
-        modalOpen:true
+        modalOpen:false,
+        modalProduct: detailProduct
+        
     }
 
     componentDidMount(){
@@ -27,7 +28,7 @@ export default class ProductProvider extends Component {
 
         this.setState(()=>{
             return{ products : tempProducts};
-        })
+        });
     }
 
     getItem = id=>{
@@ -39,7 +40,7 @@ export default class ProductProvider extends Component {
         const product = this.getItem(id);
         this.setState(() =>{
             return{detailProduct: product};
-        })
+        });
     }
 
     addToCart = id => {
@@ -55,22 +56,22 @@ export default class ProductProvider extends Component {
             return{products: tempProducts, cart:[...this.state.cart,product]}
         },()=>{
             console.log(this.state);
-        })
+        });
 
-    }
+    };
 
     modalOpen = id=>{
-        const product = this.getItem(id)
+        const product = this.getItem(id);
         this.setState(()=>{
-            return{modalProduct: product, modalOpen:true}
-        })
-    }
+            return{modalProduct: product, modalOpen:true};
+        });
+    };
 
     closeModal = ()=>{
         this.setState(()=>{
-            return {modalOpen:false}
-        })
-    }
+            return {modalOpen:false};
+        });
+    };
 
     render() {
         return (

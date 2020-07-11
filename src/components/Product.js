@@ -20,8 +20,8 @@ export default class Product extends Component {
                             </Link>
                             <button className="cart-btn" disabled={inCart?true:false}
                             onClick={()=>{
-                                value.addToCart(id)
-                                value.modalOpen(id)
+                                value.addToCart(id);
+                                value.modalOpen(id);
                             }}>
                             {inCart ? (<p className="text-captalize mb-0" disabled>
                                 InCart
